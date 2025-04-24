@@ -19,6 +19,12 @@
 *.tar.gz
 *.rar
 
+# Visual Studio
+.vs/
+*.vsidx
+*.vssidx
+
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
+/.vs/MCPVPSERVER/copilot-chat/7ea6ce2a/sessions
