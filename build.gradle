@@ -1,6 +1,6 @@
 plugins {
-    id 'fabric-loom' version '1.6.10'
-    id 'maven-publish'
+    id 'fabric-loom' version '1.5.4' // 稳定版
+    id 'org.jetbrains.kotlin.jvm' version '1.8.22'
 }
 
 version = '1.0.0'
@@ -18,8 +18,15 @@ repositories {
 dependencies {
     minecraft "com.mojang:minecraft:1.20.1"
     mappings "net.fabricmc:yarn:1.20.1+build.10:v2"
-    modImplementation "net.fabricmc:fabric-loader:0.15.7"
-    modImplementation "net.fabricmc.fabric-api:fabric-api:0.91.2+1.20.1"
+    modImplementation "net.fabricmc:fabric-loader:0.15.11"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:0.97.5+1.20.1"
+    
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.22"
+    modImplementation "net.fabricmc:fabric-language-kotlin:1.10.22+kotlin.1.9.23"
+}
+
+kotlin {
+    jvmToolchain(17)
 }
 
 processResources {
@@ -30,4 +37,9 @@ jar {
     from("LICENSE") {
         rename { "${it}_${project.archivesBaseName}"}
     }
+}
+
+// 添加本地缓存配置（新增）
+tasks.withType(Wrapper).configureEach {
+    distributionUrl = null // 禁用自动下载
 }
